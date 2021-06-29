@@ -1,0 +1,20 @@
+{
+  "name": "mondc",
+  "version": "1.0.7",
+  "description": "A discord.js module that helps you with Commands and Listeners, made in typescript.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublishOnly": "tsc --project ./"
+  },
+  "keywords": [],
+  "author": "AllanGame",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.5",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  }
+}
