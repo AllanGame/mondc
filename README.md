@@ -1,5 +1,5 @@
 # Mondc
-### Mondc is a package written in typescript that helps you creating commands and listeners in discord.js
+### Mondc is a typescript package that helps you creating commands and listeners in discord.js
 
 ## CommandManager
 First, you need to know how to create commands, for creating commands you need classes that extends from 'Command', here is an example
