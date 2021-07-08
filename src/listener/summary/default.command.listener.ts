@@ -31,20 +31,31 @@ export default class DefaultCommandListener implements Listener {
           .trim()
           .split(/ +/g);
     
-          const command = args.shift().toLowerCase();
-          const cmd = commands.get(command) || 
-          aliases
-          .forEach(x => x.aliases && x.aliases.includes(command));
+          const label = args.shift().toLowerCase();
+          let command = commands.get(label);
+
+          if (!command) {
+              // search aliases
+              for(let cmd of commands.values()) {
+                  if(cmd.aliases.includes(label)) {
+                      command = cmd;
+                  } 
+              }
+  
+              if(!command) {
+                  return;
+              }
+          }
           
-          if (!cmd) {
+          if (!command) {
               return;
           }
     
-          if(!message.member.permissions.has(cmd.permissions as any)) {
+          if(!message.member.permissions.has(command.permissions as any)) {
               return;
           }
     
-          cmd.execute(message);
+          command.execute(message);
     } 
 
 }

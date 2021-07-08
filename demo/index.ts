@@ -1,28 +1,19 @@
-import { Client, Message } from 'discord.js';
-import { Command, CommandManager } from 'mondc';
+import { Client } from 'discord.js';
+import { CommandManager, ListenerManager } from 'mondc'
+import * as dotenv from "dotenv";
+import ReadyListener from './listeners/ready';
+dotenv.config();
+const client = new Client()
+client.login(process.env['DEMO_TOKEN'])
+
 
 const commandManager = new CommandManager();
 
-class ExampleCommand implements Command {
-    name: string;
-    aliases: string[];
-    permissions: string[];
-    client: Client;
-    execute(message: Message): void {
-        throw new Error('Method not implemented.');
-    }
-    
-}
+const eventManager = new ListenerManager(client);
+eventManager.register(new ReadyListener());
 
-class ExampleCommand2 implements Command {
-    name: string;
-    aliases: string[];
-    permissions: string[];
-    client: Client;
-    execute(message: Message): void {
-        throw new Error('Method not implemented.');
-    }
-    
-}
 
-commandManager.register(new ExampleCommand(), new ExampleCommand2());
+
+export {
+    client
+}

@@ -17,15 +17,15 @@
       "module":  "commonjs",
       "pretty": true,
       "sourceMap": true,
-      "outDir": "./lib/",
+      "outDir": "./build/",
       "allowJs": true,
       "noEmit": false,
       "esModuleInterop": true
     },
     "include": [
-      "./src/"
+      "./*"
     ],
     "exclude": [
-      "node_modules"
+      "./demo/node_modules"
     ]
   }

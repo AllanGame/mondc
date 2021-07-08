@@ -3,7 +3,7 @@ import Manager from "../manager/manager";
 import Listener from "./listener";
 import DefaultCommandListener from "./summary/default.command.listener";
 
-export class ListenerManager implements Manager {
+export class ListenerManager {
     
     debug: boolean;
     commandListener: Listener; 
@@ -18,11 +18,13 @@ export class ListenerManager implements Manager {
         }
     }
 
-    register(listener: Listener): void {
-        this.client.on(listener.event as any, listener.execute as any);
-        if(this.debug === true) {
-            console.log(`Registering listener ${listener.name} (Type: ${listener.event})`)
-        }
+    register(...listeners: Listener[]): void {
+        listeners.forEach(listener => {
+            this.client.on(listener.event as any, listener.execute as any);
+            if(this.debug === true) {
+                console.log(`Registering listener ${listener.name} (Type: ${listener.event})`)
+            }
+        })
     }
     
 }
