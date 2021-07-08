@@ -4,6 +4,7 @@
   "description": "A discord.js module that helps you with Commands and Listeners, made in typescript.",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "type": "module",
   "scripts": {
   },
   "keywords": [],
